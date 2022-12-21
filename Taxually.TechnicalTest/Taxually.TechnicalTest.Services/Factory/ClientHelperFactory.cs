@@ -5,7 +5,7 @@ namespace Taxually.TechnicalTest.Services.Factory
 {
     public static class ClientHelperFactory
     {
-        public static BaseClientHelper GetClientHelperTask(VatRegistrationRequest request)
+        public static BaseClientHelper GetClientHelper(VatRegistrationRequest request)
         {
             BaseClientHelper helper = request.Country switch
             {

@@ -16,4 +16,9 @@
     <PackageReference Include="coverlet.collector" Version="3.1.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Taxually.TechnicalTest.Model\Taxually.TechnicalTest.Model.csproj" />
+    <ProjectReference Include="..\Taxually.TechnicalTest.Services\Taxually.TechnicalTest.Services.csproj" />
+  </ItemGroup>
+
 </Project>
