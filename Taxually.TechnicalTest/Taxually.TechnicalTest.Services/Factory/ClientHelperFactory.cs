@@ -1,18 +1,19 @@
 ﻿using Taxually.TechnicalTest.Model.Registration;
 using Taxually.TechnicalTest.Services.Helpers;
+using Taxually.TechnicalTest.Services.Interfaces;
 
 namespace Taxually.TechnicalTest.Services.Factory
 {
-    public static class ClientHelperFactory
+    public class ClientHelperFactory : IClientHelperFactory
     {
-        public static BaseClientHelper GetClientHelper(VatRegistrationRequest request)
+        public IClientHelper GetClientHelper(VatRegistrationRequest request)
         {
-            BaseClientHelper helper = request.Country switch
+            IClientHelper helper = request.Country switch
             {
                 "GB" => new GBClientHelper(request),
                 "FR" => new FRClientHelper(request),
-                "DE" => new FRClientHelper(request),
-                _ => throw new Exception("Country not supported")
+                "DE" => new DEClientHelper(request),
+                _ => throw new ArgumentException("Country not supported")
             };
 
             return helper;

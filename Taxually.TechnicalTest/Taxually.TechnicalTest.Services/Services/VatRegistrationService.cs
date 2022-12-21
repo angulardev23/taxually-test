@@ -1,14 +1,20 @@
 ﻿using Taxually.TechnicalTest.Model.Registration;
 using Taxually.TechnicalTest.Services.Interfaces;
-using Taxually.TechnicalTest.Services.Factory;
 
 namespace Taxually.TechnicalTest.Services.Services
 {
     public class VatRegistrationService : IVatRegistrationService
     {
+        private readonly IClientHelperFactory _clientHelperFactory;
+
+        public VatRegistrationService(IClientHelperFactory clientHelperFactory) 
+        {
+            _clientHelperFactory = clientHelperFactory;
+        }
+
         public async Task RegisterVatRequest(VatRegistrationRequest request)
         {
-            var registerTask = ClientHelperFactory.GetClientHelperTask(request);
+            var registerTask = _clientHelperFactory.GetClientHelper(request);
             await registerTask.RegisterVatCountryRequest();
         }
     }
